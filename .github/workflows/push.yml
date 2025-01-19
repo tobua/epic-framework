@@ -1,0 +1,22 @@
+name: push
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test-build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun check
+      # - run: bun types
+      # - run: bun run test TODO playwright test suite
+      - run: bun rsbuild build
+      - name: 🚀 Publish Documentation
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: publish
+          folder: dist

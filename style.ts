@@ -1,0 +1,52 @@
+import { configure } from 'epic-inline'
+import { scale } from 'optica'
+
+const textScalingFactor = 1.2
+const textScalingFactorHeadings = 1.6
+
+export const Color = {
+  highlight: '#3600E6',
+  highlightTransparent: (transparency: number) => `rgba(33, 150, 243, ${transparency})`,
+  interact: '#F37E21',
+  interactTransparent: (transparency: number) => `rgba(243, 126, 33, ${transparency})`,
+  black: '#000000',
+  white: '#FFFFFF',
+  gray: '#D9D9D9',
+  lightgray: '#E9E9E9',
+}
+
+configure({
+  colors: {
+    highlight: Color.highlight,
+    interact: Color.interact,
+  },
+})
+
+export const Space = {
+  huge: scale(80),
+  large: scale(40),
+  medium: scale(20),
+  small: scale(10),
+  tiny: scale(5),
+}
+
+export const Text = {
+  heading: scale(40, textScalingFactorHeadings),
+  subHeading: scale(32, textScalingFactorHeadings),
+  large: scale(24, textScalingFactor),
+  medium: scale(16, textScalingFactor),
+  small: scale(12, textScalingFactor),
+}
+
+export const Transition = {
+  fast: '300ms',
+  medium: '600ms',
+  slow: '1200ms',
+}
+
+export const globalStyles = () => {
+  document.body.innerHTML = ''
+  if (window.CSS.supports('max-height', '100dvh')) {
+    document.body.style.minHeight = '100dvh'
+  }
+}
