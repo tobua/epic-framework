@@ -1,3 +1,4 @@
+import { defineConfig as definePlaywrightConfig, devices } from '@playwright/test'
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 
@@ -32,22 +33,28 @@ export const rsbuild = defineConfig({
   },
 })
 
-export const gitignore = 'bundle'
+export const gitignore = ['extends:bundle', 'test-results']
 export const vscode = 'biome'
-export const biome = {
-  extends: 'recommended',
-  linter: {
-    rules: {
-      correctness: {
-        useImportExtensions: 'off',
-        noUndeclaredDependencies: 'off', // Absolute imports.
+export const biome = [
+  {
+    extends: 'epic',
+    linter: {
+      rules: {
+        correctness: {
+          useImportExtensions: 'off',
+          noUndeclaredDependencies: 'off', // Absolute imports.
+        },
       },
     },
+    files: {
+      ignore: ['rsbuild.config.ts', 'test', 'playwright.config.ts'],
+    },
   },
-  files: {
-    ignore: ['rsbuild.config.ts'],
+  {
+    folder: 'test',
+    extends: 'test',
   },
-}
+]
 
 export const typescript = {
   extends: 'web',
@@ -60,3 +67,26 @@ export const typescript = {
   },
   files: ['index.tsx'],
 }
+
+export const playwright = definePlaywrightConfig({
+  testDir: './test',
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : undefined,
+  use: {
+    // biome-ignore lint/style/useNamingConvention: Given by configuration.
+    baseURL: 'http://localhost:3000',
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ],
+  webServer: {
+    command: 'bun rsbuild build && bun rsbuild preview',
+    url: 'http://localhost:3000',
+    reuseExistingServer: !process.env.CI,
+  },
+})

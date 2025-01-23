@@ -1,6 +1,18 @@
 import { configure } from 'epic-inline'
 import { scale } from 'optica'
 
+configure({
+  colors: {
+    highlight: '#3600E6',
+    interact: '#F37E21',
+    gray200: '#EEEEEE',
+    gray400: '#BDBDBD',
+    gray600: '#757575',
+    gray800: '#424242',
+  },
+  size: (value: number) => scale(value),
+})
+
 const textScalingFactor = 1.2
 const textScalingFactorHeadings = 1.6
 
@@ -14,13 +26,6 @@ export const Color = {
   gray: '#D9D9D9',
   lightgray: '#E9E9E9',
 }
-
-configure({
-  colors: {
-    highlight: Color.highlight,
-    interact: Color.interact,
-  },
-})
 
 export const Space = {
   huge: scale(80),

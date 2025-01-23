@@ -1,52 +1,33 @@
-import type { CSSProperties } from 'epic-jsx'
 import { go } from 'epic-router'
 import { tag } from 'epic-tag'
-import { Color } from 'style'
 import logo from '../logo.png'
 
 const Wrapper = tag(
   'header',
   'flex flex1 justifyContent-space-between alignItems-center background-highlight p-small marginTop-large marginBottom-large',
 )
-const Title = tag('div', 'flex center gap-medium')
+const Left = tag('div', 'flex center gap-medium')
 const Logo = tag('img', 'w-large h-large')
-
-const headingStyles: CSSProperties = {
-  textDecoration: 'underline',
-  fontWeight: 'normal',
-  color: Color.white,
-  textDecorationLine: 'none',
-  margin: 0,
-  textShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-}
-
-const linkStyles: CSSProperties = {
-  textDecoration: 'none',
-}
-
-const navigationStyles: CSSProperties = {
-  textDecoration: 'none',
-  color: Color.white,
-}
+const Title = tag('p', 'normal fontWeight fontSize-32 color-white textShadow-[0px 0px 10px rgba(0, 0, 0, 0.5)]')
+const Link = tag('a', 'link', { white: 'color-white' })
 
 export function Header() {
   return (
     <Wrapper>
-      <Title>
+      <Left>
         <Logo src={logo} />
-        <a
-          style={linkStyles}
+        <Link
           href="/"
           onClick={(event) => {
             event.preventDefault()
             go('overview')
           }}
         >
-          <h1 style={headingStyles}>EPIC Framework</h1>
-        </a>
-      </Title>
-      <a
-        style={navigationStyles}
+          <Title>EPIC Framework</Title>
+        </Link>
+      </Left>
+      <Link
+        white={true}
         href="/"
         onClick={(event) => {
           event.preventDefault()
@@ -54,7 +35,7 @@ export function Header() {
         }}
       >
         Guide
-      </a>
+      </Link>
     </Wrapper>
   )
 }

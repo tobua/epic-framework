@@ -1,25 +1,24 @@
 {
   "name": "epic-framework",
   "scripts": {
-    "check": "biome check --write .",
+    "check": "biome check --write . && biome check --write --config-path=test ./test/*",
     "start": "rsbuild dev --open",
+    "test": "playwright test",
     "types": "tsc"
   },
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@rsbuild/core": "^1.1.13",
+    "@playwright/test": "^1.50.0",
+    "@rsbuild/core": "^1.2.2",
     "@rsbuild/plugin-react": "^1.1.0",
     "epic-jsx": "^0.9.5",
     "epic-language": "^1.0.0",
-    "epic-router": "^6.2.0",
+    "epic-router": "^6.2.1",
     "epic-state": "^0.14.0",
-    "epic-tag": "^0.7.0",
-    "optica": "^3.0.0",
+    "epic-tag": "^0.8.0",
+    "optica": "^3.0.1",
     "typescript": "^5.7.3",
-    "zero-configuration": "^0.17.6"
-  },
-  "overrides": {
-    "epic-inline": "^0.12.0"
+    "zero-configuration": "^0.18.0"
   },
   "trustedDependencies": [
     "zero-configuration"
