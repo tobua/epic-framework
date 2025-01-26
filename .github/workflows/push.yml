@@ -7,14 +7,16 @@ on:
 jobs:
   test-build-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
       - run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 bun install
       - run: bun playwright install chromium
       - run: bun check
-      # - run: bun types
-      # - run: bun run test TODO playwright test suite
+      - run: bun types
+      - run: bun run test
       - run: bun rsbuild build
       - name: 🚀 Publish Documentation
         uses: JamesIves/github-pages-deploy-action@v4

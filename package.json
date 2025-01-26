@@ -9,13 +9,13 @@
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
     "@playwright/test": "^1.50.0",
-    "@rsbuild/core": "^1.2.2",
+    "@rsbuild/core": "^1.2.3",
     "@rsbuild/plugin-react": "^1.1.0",
-    "epic-jsx": "^0.9.5",
+    "epic-jsx": "^0.9.8",
     "epic-language": "^1.0.0",
-    "epic-router": "^6.2.1",
-    "epic-state": "^0.14.0",
-    "epic-tag": "^0.8.0",
+    "epic-router": "^6.2.2",
+    "epic-state": "^0.15.1",
+    "epic-tag": "^0.8.1",
     "optica": "^3.0.1",
     "typescript": "^5.7.3",
     "zero-configuration": "^0.18.0"
