@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@playwright/test": "^1.50.0",
+    "@playwright/test": "^1.50.1",
     "@rsbuild/core": "^1.2.3",
     "@rsbuild/plugin-react": "^1.1.0",
-    "epic-jsx": "^0.9.8",
+    "epic-jsx": "^0.9.13",
     "epic-language": "^1.0.0",
     "epic-router": "^6.2.2",
     "epic-state": "^0.15.1",

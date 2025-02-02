@@ -1,5 +1,6 @@
 import { go } from 'epic-router'
 import { tag } from 'epic-tag'
+import { Label } from 'helper'
 import logo from '../logo.png'
 
 const Wrapper = tag(
@@ -10,7 +11,10 @@ const Left = tag('div', 'flex center gap-medium')
 const Right = tag('nav', 'flex center gap-medium')
 const Logo = tag('img', 'w-40 h-40 background-white p-small radius-small')
 const Title = tag('p', 'normal fontWeight fontSize-32 color-white textShadow-[0px 0px 10px rgba(0, 0, 0, 0.5)]')
-const Link = tag('a', 'link padding-small radius-small', { white: 'color-white', hover: 'background-white color-gray600' })
+const Link = tag('a', 'link padding-small radius-small', {
+  white: 'color-white',
+  hover: { default: 'background-white color-gray600', title: '' },
+})
 
 export function Header() {
   return (
@@ -19,6 +23,8 @@ export function Header() {
         <Logo src={logo} />
         <Link
           href="/"
+          aria-label={Label.overviewLink}
+          title={true}
           onClick={(event) => {
             event.preventDefault()
             go('overview')
@@ -30,6 +36,7 @@ export function Header() {
       <Right>
         <Link
           white={true}
+          aria-label={Label.guideLink}
           href="/"
           onClick={(event) => {
             event.preventDefault()
@@ -40,6 +47,7 @@ export function Header() {
         </Link>
         <Link
           white={true}
+          aria-label={Label.documenationLink}
           href="/"
           onClick={(event) => {
             event.preventDefault()
