@@ -1,12 +1,14 @@
+import { click } from 'epic-router'
 import { tag } from 'epic-tag'
 import { Animation, Jsx, Language, Native, Query, Router, State, Tag } from 'markup/icons'
-import { Paragraph, SubHeading } from 'tags'
+import { Button, Paragraph, SubHeading } from 'tags'
 
 const plugins = [
   {
     name: 'jsx',
     icon: Jsx,
     description: 'JSX renderer.',
+    documentation: 'jsx',
   },
   {
     name: 'state',
@@ -56,7 +58,10 @@ export function Plugins() {
             <SubHeading>epic-{plugin.name}</SubHeading>
             <plugin.icon width={120} height={120} />
           </Vertical>
-          <Paragraph>{plugin.description}</Paragraph>
+          <Vertical>
+            <Paragraph>{plugin.description}</Paragraph>
+            {plugin.documentation && <Button onClick={click(`documentation/${plugin.documentation}`)}>Documentation</Button>}
+          </Vertical>
         </Plugin>
       ))}
     </Wrapper>

@@ -1,25 +1,15 @@
-import type { JSX } from 'epic-jsx'
-import type { CSSProperties } from 'epic-jsx'
+import type React from 'epic-jsx'
 import { tag } from 'epic-tag'
 import { Footer } from 'markup/footer'
 import { Header } from 'markup/header'
 
-const wrapperStyles: CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  flex: 1,
-  fontFamily: 'sans-serif',
-  fontWeight: 400,
-  fontStyle: 'normal',
-}
-
+const Wrapper = tag('div', 'flex col alignItems-center flex1')
 const Content = tag('main', 'flex alignSelf-normal justifyContent-center flex1 p-small')
 const Center = tag('div', 'flex column maxWidth-[1000px] fullWidth gap-large')
 
-export function Page({ children }: { children: JSX.Element | JSX.Element[] }) {
+export function Static({ children }: { children: React.ReactNode }) {
   return (
-    <div style={wrapperStyles}>
+    <Wrapper>
       <Center>
         <Header />
       </Center>
@@ -27,6 +17,6 @@ export function Page({ children }: { children: JSX.Element | JSX.Element[] }) {
         <Center>{children}</Center>
       </Content>
       <Footer />
-    </div>
+    </Wrapper>
   )
 }

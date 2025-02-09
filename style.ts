@@ -1,17 +1,27 @@
 import { configure } from 'epic-inline'
+import { surfaceColors } from 'helper'
 import { scale } from 'optica'
 
-configure({
-  colors: {
-    highlight: '#3600E6',
-    interact: '#F37E21',
-    gray200: '#EEEEEE',
-    gray400: '#BDBDBD',
-    gray600: '#757575',
-    gray800: '#424242',
-  },
-  size: (value: number) => scale(value),
-})
+const pageColors = {
+  default: '#3600E6',
+  jsx: '#0075FF',
+  guide: '#000000',
+}
+
+// TODO epic-tag, calling configure should rerender all tags.
+export const setColors = (page: string) =>
+  configure({
+    colors: {
+      highlight: '#3600E6',
+      interact: '#F37E21',
+      gray200: '#EEEEEE',
+      gray400: '#BDBDBD',
+      gray600: '#757575',
+      gray800: '#424242',
+      ...surfaceColors(pageColors[page] ?? pageColors.default),
+    },
+    size: (value: number) => scale(value),
+  })
 
 const textScalingFactor = 1.2
 const textScalingFactorHeadings = 1.6
@@ -50,7 +60,6 @@ export const Transition = {
 }
 
 export const globalStyles = () => {
-  document.body.innerHTML = ''
   if (window.CSS.supports('max-height', '100dvh')) {
     document.body.style.minHeight = '100dvh'
   }
