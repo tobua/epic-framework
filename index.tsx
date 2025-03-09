@@ -5,9 +5,9 @@ import { plugin } from 'epic-state'
 import { connect } from 'epic-state/connect'
 import { Static } from 'markup/static'
 import { addRoutes } from 'router'
-import { globalStyles } from 'style'
+import { styles } from 'style'
 
-globalStyles() // Styles
+styles() // Styles
 plugin(connect) // Connect state to JSX renderer
 addRoutes() // Router
 

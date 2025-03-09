@@ -7,16 +7,16 @@ const lighten = (color: string, change: number): string => {
   return `#${convert.hsl.hex(hsl)}`
 }
 
-export const surfaceColors = (color: string) => ({
-  s100: lighten(color, 8),
-  s200: lighten(color, 7),
-  s300: lighten(color, 6),
-  s400: lighten(color, 5),
-  s500: lighten(color, 4),
-  s600: lighten(color, 3),
-  s700: lighten(color, 2),
-  s800: lighten(color, 1),
-  s900: lighten(color, 0),
+export const surfaceColors = (color: string, name: string) => ({
+  [`${name}100`]: lighten(color, 8),
+  [`${name}200`]: lighten(color, 7),
+  [`${name}300`]: lighten(color, 6),
+  [`${name}400`]: lighten(color, 5),
+  [`${name}500`]: lighten(color, 4),
+  [`${name}600`]: lighten(color, 3),
+  [`${name}700`]: lighten(color, 2),
+  [`${name}800`]: lighten(color, 1),
+  [`${name}900`]: lighten(color, 0),
 })
 
 export const Label = {

@@ -10,3 +10,4 @@ export const Horizontal = tag('div', 'flex gap-medium alignItems-center', {
   center: 'justifyContent-center',
 })
 export const Vertical = tag('div', 'flex flex1 column gap-small alignItems-start')
+export const Box = tag('div', 'flex w-50 h-50')
