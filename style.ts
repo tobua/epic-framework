@@ -2,6 +2,15 @@ import { configure } from 'epic-inline'
 import { surfaceColors } from 'helper'
 import { scale } from 'optica'
 
+export const creativeColors = {
+  purple: '#6B46C1',
+  violet: '#8B5CF6',
+  lavender: '#A78BFA',
+  orange: '#F97316',
+  yellow: '#EAB308',
+  turquoise: '#14B8A6',
+}
+
 const pageColors = {
   default: '#3600E6',
   jsx: '#0075FF',

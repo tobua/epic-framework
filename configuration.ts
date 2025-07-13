@@ -38,21 +38,11 @@ export const vscode = 'biome'
 export const biome = [
   {
     extends: 'epic',
-    linter: {
-      rules: {
-        correctness: {
-          useImportExtensions: 'off',
-          noUndeclaredDependencies: 'off', // Absolute imports.
-        },
-      },
-    },
-    files: {
-      ignore: ['rsbuild.config.ts', 'test', 'playwright.config.ts'],
-    },
   },
   {
     folder: 'test',
     extends: 'test',
+    root: false,
   },
 ]
 
@@ -71,7 +61,7 @@ export const typescript = {
 export const playwright = definePlaywrightConfig({
   testDir: './test',
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
+  forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   use: {

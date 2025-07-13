@@ -1,9 +1,18 @@
+import { state } from 'epic-state'
 import { Code } from 'markup/components'
-import { Heading, Paragraph } from 'tags'
+import { Button, Heading, Paragraph, Text } from 'tags'
+
+const State = state({
+  count: 1,
+})
 
 export function Guide() {
   return (
     <>
+      <Button onClick={() => State.count++}>Increment</Button>
+      <Text>
+        Count: {State.count} Component ID: {this.id}
+      </Text>
       <Heading>Guide</Heading>
       <Paragraph>Getting started with the basic parts looks like this:</Paragraph>
       <Code>{`import { render } from 'epic-jsx'

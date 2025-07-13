@@ -27,10 +27,13 @@ export function Header() {
         </Link>
       </Left>
       <Right>
-        <Link white={true} aria-label={Label.guideLink} href="/" onClick={click('guide')}>
+        <Link white={true} aria-label={Label.guideLink} href="/guide" onClick={click('guide')}>
           Guide
         </Link>
-        <Link white={true} aria-label={Label.documenationLink} href="/" onClick={click('documentation')}>
+        <Link white={true} aria-label={Label.libraryLink} href="/library" onClick={click('library')}>
+          Library
+        </Link>
+        <Link white={true} aria-label={Label.documenationLink} href="/documentation" onClick={click('documentation')}>
           Documentation
         </Link>
       </Right>

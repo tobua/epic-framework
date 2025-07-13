@@ -2,6 +2,7 @@ import { addPage, configure } from 'epic-router'
 import { Documentation } from 'page/documentation'
 import { Guide } from 'page/guide'
 import { Jsx } from 'page/jsx'
+import { Library } from 'page/library'
 import { Overview } from 'page/overview'
 import { setColors } from 'style'
 
@@ -12,6 +13,7 @@ export function addRoutes() {
   addPage('guide', Guide)
   addPage('documentation', Documentation)
   addPage('documentation/jsx', Jsx)
+  addPage('library', Library)
 
   setColors(router.route)
 }
